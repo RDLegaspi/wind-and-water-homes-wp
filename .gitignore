@@ -1,0 +1,45 @@
+# WordPress core and generated files
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+/.htaccess
+
+# Keep custom code, ignore runtime content
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backup*/
+/wp-content/ai1wm-backups/
+/wp-content/wflogs/
+/wp-content/debug.log
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+wp-config.php
+wp-config-local.php
+
+# Dependency/build output
+/vendor/
+/node_modules/
+/dist/
+/build/
+*.log
+
+# Docker/local runtime state
+/.docker/
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Database dumps
+*.sql
+*.sql.gz
+*.dump

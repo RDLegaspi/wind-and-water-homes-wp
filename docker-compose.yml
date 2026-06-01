@@ -1,0 +1,80 @@
+services:
+  wordpress:
+    image: wordpress:6.5-php8.2-apache
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - "${WORDPRESS_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-1}
+    volumes:
+      - wordpress_core:/var/www/html
+      - ./wp-content/themes/wind-and-water-homes:/var/www/html/wp-content/themes/wind-and-water-homes
+      - ./wp-content/plugins/wind-and-water-custom:/var/www/html/wp-content/plugins/wind-and-water-custom
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./docker/php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+
+  mariadb:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-wordpress}
+      MARIADB_USER: ${DB_USER:-wordpress}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-wordpress}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-wordpress_root}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+  wpcli:
+    image: wordpress:cli-php8.2
+    depends_on:
+      mariadb:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    user: "33:33"
+    working_dir: /var/www/html
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_NAME: ${DB_NAME:-wordpress}
+      WORDPRESS_DB_USER: ${DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-wordpress}
+    volumes:
+      - wordpress_core:/var/www/html
+      - ./wp-content/themes/wind-and-water-homes:/var/www/html/wp-content/themes/wind-and-water-homes
+      - ./wp-content/plugins/wind-and-water-custom:/var/www/html/wp-content/plugins/wind-and-water-custom
+      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./wp-content/uploads:/var/www/html/wp-content/uploads
+    profiles:
+      - tools
+
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    restart: unless-stopped
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    ports:
+      - "${PHPMYADMIN_PORT:-8081}:80"
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: root
+      PMA_PASSWORD: ${DB_ROOT_PASSWORD:-wordpress_root}
+    profiles:
+      - tools
+
+volumes:
+  wordpress_core:
+  mariadb_data:

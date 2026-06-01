@@ -1,0 +1,60 @@
+/*
+Theme Name: Wind and Water Homes
+Author: Wind and Water Homes
+Description: Custom WordPress theme for the Wind and Water Homes migration.
+Version: 0.1.0
+Requires at least: 6.5
+Requires PHP: 8.1
+Text Domain: wind-and-water-homes
+*/
+
+:root {
+  --wwh-ink: #24302f;
+  --wwh-muted: #5d6865;
+  --wwh-paper: #f8f7f2;
+  --wwh-white: #ffffff;
+  --wwh-water: #3d7f8f;
+  --wwh-leaf: #5d7a4c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--wwh-ink);
+  background: var(--wwh-paper);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--wwh-water);
+}
+
+.site-header,
+.site-footer {
+  padding: 24px clamp(20px, 5vw, 64px);
+  background: var(--wwh-white);
+}
+
+.site-main {
+  padding: clamp(32px, 6vw, 80px) clamp(20px, 5vw, 64px);
+}
+
+.site-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+}
+
+.site-description {
+  margin: 8px 0 0;
+  color: var(--wwh-muted);
+}
+
+.content-shell {
+  width: min(100%, 960px);
+  margin: 0 auto;
+}
