@@ -19,21 +19,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <header class="site-header">
-	<div class="content-shell">
+	<div class="header-shell">
 		<p class="site-title">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">Wind & Water Homes</a>
 		</p>
-		<?php if ( get_bloginfo( 'description' ) ) : ?>
-			<p class="site-description"><?php bloginfo( 'description' ); ?></p>
-		<?php endif; ?>
-		<?php
-		wp_nav_menu(
-			array(
-				'theme_location' => 'primary',
-				'container'      => 'nav',
-				'fallback_cb'    => false,
-			)
-		);
-		?>
+		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'wind-and-water-homes' ); ?>">
+			<?php foreach ( wwh_sample_nav() as $label => $url ) : ?>
+				<a href="<?php echo esc_url( home_url( $url ) ); ?>"><?php echo esc_html( $label ); ?></a>
+			<?php endforeach; ?>
+		</nav>
 	</div>
 </header>
