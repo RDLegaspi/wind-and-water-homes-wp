@@ -38,7 +38,12 @@ body {
   margin: 0;
   color: var(--wwh-ink);
   background: var(--wwh-white);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   line-height: 1.6;
 }
 
@@ -196,7 +201,11 @@ a {
   color: rgba(255, 255, 255, 0.92);
   background:
     linear-gradient(135deg, rgba(9, 29, 53, 0.95), rgba(29, 45, 66, 0.88)),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0 12px, transparent 12px 24px);
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.08) 0 12px,
+      transparent 12px 24px
+    );
   box-shadow: var(--wwh-shadow);
   text-align: center;
 }
@@ -417,27 +426,75 @@ a {
 }
 
 .site-footer {
-  padding: 44px 0;
+  padding: 53px 0 55px;
   color: var(--wwh-white);
-  background: var(--wwh-navy);
+  background: var(--wwh-slate);
+}
+
+.footer-shell {
+  display: grid;
+  grid-template-columns: 275px 472px;
+  gap: clamp(56px, 10vw, 160px);
+  align-items: center;
+  justify-content: center;
+  width: min(100% - 40px, 980px);
+  margin: 0 auto;
 }
 
 .footer-logo {
-  margin: 0 0 22px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2rem;
-  font-weight: 700;
+  display: block;
+  line-height: 0;
+}
+
+.footer-logo img {
+  display: block;
+  width: 275px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-links {
+  display: grid;
+  gap: 8px;
+  width: min(100%, 472px);
 }
 
 .footer-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 22px;
-  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 92px;
+  margin: 0;
 }
 
 .footer-nav a {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--wwh-white);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  min-width: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  justify-self: center;
+  width: 75px;
+}
+
+.footer-socials a {
+  display: block;
+  width: 21px;
+  height: 21px;
+  line-height: 0;
+}
+
+.footer-socials img {
+  display: block;
+  width: 21px;
+  height: 21px;
 }
 
 @media (max-width: 980px) {
@@ -449,6 +506,16 @@ a {
 
   .site-nav {
     justify-content: flex-start;
+  }
+
+  .footer-shell {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 36px;
+  }
+
+  .footer-links {
+    justify-items: center;
   }
 
   .hero-section,
@@ -464,7 +531,8 @@ a {
   .card-grid,
   .plan-grid,
   .testimonial-grid,
-  .faq-list {
+  .faq-list,
+  .footer-nav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -495,8 +563,14 @@ a {
   .testimonial-grid,
   .faq-list,
   .feature-list,
-  .sample-form {
+  .sample-form,
+  .footer-nav {
     grid-template-columns: 1fr;
+  }
+
+  .footer-nav {
+    gap: 9px;
+    text-align: center;
   }
 
   .plan-card dl {
