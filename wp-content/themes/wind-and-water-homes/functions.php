@@ -27,11 +27,13 @@ function wwh_setup(): void {
 add_action( 'after_setup_theme', 'wwh_setup' );
 
 function wwh_enqueue_assets(): void {
+	$stylesheet_path = get_stylesheet_directory() . '/style.css';
+
 	wp_enqueue_style(
 		'wwh-theme',
 		get_stylesheet_uri(),
 		array(),
-		wp_get_theme()->get( 'Version' )
+		file_exists( $stylesheet_path ) ? (string) filemtime( $stylesheet_path ) : wp_get_theme()->get( 'Version' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'wwh_enqueue_assets' );

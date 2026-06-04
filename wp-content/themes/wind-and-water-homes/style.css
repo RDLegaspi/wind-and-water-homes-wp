@@ -176,6 +176,239 @@ a {
   overflow: hidden;
 }
 
+.home-main {
+  background: var(--wwh-white);
+}
+
+.home-hero {
+  position: relative;
+  display: grid;
+  min-height: 740px;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.home-hero__media {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(9, 29, 53, 0.2), rgba(9, 29, 53, 0.2)),
+    linear-gradient(
+      135deg,
+      var(--wwh-navy) 0%,
+      var(--wwh-blue-gray) 52%,
+      var(--wwh-slate) 100%
+    );
+}
+
+.home-hero__media::before,
+.home-hero__media::after {
+  position: absolute;
+  content: "";
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.home-hero__media::before {
+  right: 12%;
+  bottom: 0;
+  width: 42%;
+  height: 38%;
+  clip-path: polygon(50% 0, 100% 45%, 100% 100%, 0 100%, 0 45%);
+}
+
+.home-hero__media::after {
+  right: 18%;
+  bottom: 19%;
+  width: 30%;
+  height: 9%;
+  transform: skewY(-18deg);
+}
+
+.home-hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  width: min(100% - 40px, 980px);
+  margin-top: 120px;
+}
+
+.home-hero h1 {
+  max-width: 760px;
+  margin: 0;
+  color: var(--wwh-white);
+  font-family: Oswald, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(3.4rem, 7vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1.12;
+  text-shadow:
+    -1px -1px 0 var(--wwh-navy),
+    1px 1px 0 var(--wwh-navy);
+}
+
+.home-hero__button {
+  display: grid;
+  width: 180px;
+  height: 62px;
+  margin-top: 34px;
+  place-items: center;
+  color: #000000;
+  background: var(--wwh-white);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  font-family: Oswald, "Arial Narrow", Arial, sans-serif;
+  font-size: 1.55rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.home-hero__button:hover {
+  color: var(--wwh-white);
+  background: rgba(43, 43, 43, 0.78);
+}
+
+.home-intro {
+  position: relative;
+  display: grid;
+  grid-template-columns: 196px minmax(0, 591px) 196px;
+  gap: 0;
+  justify-content: center;
+  width: min(100% - 40px, 980px);
+  margin: 0 auto;
+  padding: 48px 0 70px;
+}
+
+.home-intro__copy {
+  text-align: center;
+}
+
+.home-intro h2 {
+  margin: 0;
+  color: var(--wwh-navy);
+  font-family: Oswald, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(2.35rem, 4vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.home-intro p {
+  max-width: 590px;
+  margin: 16px auto 0;
+  color: var(--wwh-ink);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.home-stamp,
+.home-floating-note {
+  align-self: start;
+  justify-self: center;
+  display: grid;
+  width: 196px;
+  height: 196px;
+  place-items: center;
+  padding: 26px;
+  color: var(--wwh-white);
+  background: var(--wwh-red);
+  border-radius: 50%;
+  text-align: center;
+  transform: rotate(-14deg);
+}
+
+.home-floating-note {
+  margin-top: 32px;
+  background: var(--wwh-navy);
+  transform: rotate(23deg);
+}
+
+.home-stamp span,
+.home-floating-note span {
+  display: block;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.home-stamp strong,
+.home-floating-note strong {
+  display: block;
+  font-family: Oswald, "Arial Narrow", Arial, sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.home-image-band {
+  display: grid;
+  min-height: 548px;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.78);
+  background:
+    linear-gradient(rgba(29, 45, 66, 0.12), rgba(29, 45, 66, 0.12)),
+    linear-gradient(120deg, var(--wwh-blue-pale), var(--wwh-blue-gray));
+  font-family: Oswald, "Arial Narrow", Arial, sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-transform: uppercase;
+}
+
+.home-quote {
+  width: min(100% - 80px, 980px);
+  margin: 18px auto 0;
+}
+
+.home-quote__frame {
+  display: grid;
+  min-height: 258px;
+  place-items: center;
+  padding: 28px clamp(28px, 8vw, 125px);
+  background: var(--wwh-navy);
+  box-shadow: 0 1px 0 5px rgb(50, 65, 88);
+}
+
+.home-quote blockquote {
+  margin: 0;
+  color: var(--wwh-white);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.45rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.28;
+  text-align: center;
+}
+
+.home-closing {
+  position: relative;
+  display: grid;
+  min-height: 260px;
+  place-items: center;
+  width: min(100% - 40px, 980px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-closing__mark {
+  position: absolute;
+  width: min(84vw, 836px);
+  height: 138px;
+  background: var(--wwh-red);
+  opacity: 0.95;
+  transform: rotate(-3deg);
+}
+
+.home-closing h2 {
+  position: relative;
+  max-width: 760px;
+  margin: 0;
+  color: #000000;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-shadow:
+    -1px -1px 0 var(--wwh-white),
+    -1px 1px 0 var(--wwh-white),
+    1px 1px 0 var(--wwh-white),
+    1px -1px 0 var(--wwh-white);
+}
+
 .hero-section,
 .content-band {
   width: min(100% - 40px, 1180px);
@@ -591,6 +824,22 @@ a {
     justify-items: center;
   }
 
+  .home-intro {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+  }
+
+  .home-stamp,
+  .home-floating-note {
+    width: 150px;
+    height: 150px;
+  }
+
+  .home-floating-note {
+    margin-top: 0;
+  }
+
   .hero-section,
   .split-band,
   .contact-band {
@@ -643,6 +892,52 @@ a {
   .site-subnav a {
     padding: 8px;
     color: var(--wwh-muted);
+  }
+
+  .home-hero {
+    min-height: 560px;
+  }
+
+  .home-hero__content {
+    margin-top: 48px;
+  }
+
+  .home-hero__button {
+    width: 160px;
+    height: 54px;
+    font-size: 1.25rem;
+  }
+
+  .home-intro {
+    width: min(100% - 28px, 980px);
+    padding: 34px 0 48px;
+  }
+
+  .home-intro p {
+    font-size: 1rem;
+  }
+
+  .home-image-band {
+    min-height: 340px;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .home-quote {
+    width: min(100% - 40px, 980px);
+  }
+
+  .home-quote__frame {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .home-closing {
+    min-height: 220px;
+  }
+
+  .home-closing__mark {
+    height: 110px;
   }
 
   .hero-copy h1 {
